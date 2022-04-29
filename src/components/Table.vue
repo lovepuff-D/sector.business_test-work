@@ -118,9 +118,10 @@
                     this.posts.sort((a, b) => b.id - a.id)
                     this.flagForId = true
                 }
+                this.flagForTitle = false
+                this.flagBody = false
             },
             SortPostByTitle() {
-
                 if (!this.flagForTitle) {
                     this.posts.sort((a, b) => {
                         return a.title.localeCompare(b.title)
@@ -132,6 +133,8 @@
                     this.posts.sort((a, b) => a.title - b.title ? 1 : -1)
                     this.flagForTitle = false
                 }
+                this.flagForId = false
+                this.flagBody = false
             },
             SortPostByDescription() {
                 if (!this.flagBody) {
@@ -145,6 +148,8 @@
                     this.posts.sort((a, b) => a.body - b.body ? 1 : -1)
                     this.flagBody = false
                 }
+                this.flagForId = false
+                this.flagForTitle = false
             },
             //---
             async fetchPost() {
